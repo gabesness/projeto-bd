@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>Ingresso.com!</title>
+</header>
+
+<body>
+  <h1>Pagina Inicial: bem-vindo :)</h1>
+
+  <table>
+    <tr>
+      <th>título</th>
+      <th>descrição</th>
+      <th>datas</th>
+    </tr>
+    {% for valor in valores %}
+      <tr>
+        <td>{{valor["titulo"]}}</td>
+        <td>{{valor["descricao"]}}</td>
+        <td>{{valor["datas"]}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <form action="/editar_evento">
+    <button type="submit" value="editar evento">Adicionar evento</button>
+  </form>
+
+  <a href="/categorias">Ver categorias</a>
+</body>
+
+</html>

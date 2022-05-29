@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <title>Categorias</title>
+</header>
+
+<body>
+  <h1>Categorias</h1>
+
+  <table>
+    <tr>
+      <th>nome</th>
+    </tr>
+    {% for valor in valores %}
+      <tr>
+        <td><a href="/editar_categoria">{{valor["nome"]}}</a></td>
+      </tr>
+    {% endfor %}
+  </table>
+  <form action="/editar_categoria">
+    <button type="submit" value="editar categoria">Adicionar categoria</button>
+  </form>
+  <a href="/eventos">Voltar para Eventos</a>
+</body>
+
+</html>

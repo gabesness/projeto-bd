@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <header>
+  </header>
+  <title>Editar {{tabela}}</title>
+  <body>
+      <form action="/editar_{{tabela}}" method="post" enctype="application/x-www-form-urlencoded">
+        {% if tabela == "evento" %}
+        <label>Título: </label>
+        <input type="text" id="titulo" name="titulo"><br><br>
+        <label>Descrição: </label>
+        <input type="text" id="descricao" name="descricao"><br><br>
+        <label>Datas: </label>
+        <input type="date" id="data" name="data"><br><br>
+        {% endif %}
+        {% if tabela == "categoria" %}
+        <label>Nome: </label>
+        <input type="text" id="nome" name="nome"><br><br>
+        {% endif %}
+        <button type="submit">Salvar</button>
+      </form>
+      <form>
+        <button type="submit">Excluir</button>
+      </form>
+  </body>
+</html>
