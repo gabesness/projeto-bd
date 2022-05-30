@@ -4,23 +4,44 @@
   </header>
   <title>Editar {{tabela}}</title>
   <body>
-      <form action="/editar_{{tabela}}" method="post" enctype="application/x-www-form-urlencoded">
-        {% if tabela == "evento" %}
+    {% if tabela == "eventos" %}
+    {% if json == {} %}
+      <form action="/criar_eventos" method="post" enctype="multipart/form-data">
         <label>Título: </label>
-        <input type="text" id="titulo" name="titulo"><br><br>
+        <input type="text" id="titulo" name="titulo" required><br><br>
         <label>Descrição: </label>
         <input type="text" id="descricao" name="descricao"><br><br>
         <label>Datas: </label>
-        <input type="date" id="data" name="data"><br><br>
-        {% endif %}
-        {% if tabela == "categoria" %}
-        <label>Nome: </label>
-        <input type="text" id="nome" name="nome"><br><br>
-        {% endif %}
+        <input type="date" id="datas" name="datas" required><br><br>
         <button type="submit">Salvar</button>
+        </form>
+    {% else %}
+    <form action="/editar_eventos" method="post" enctype="multipart/form-data">
+      <label>Título: </label>
+      <input type="text" id="titulo" name="titulo" value="{{json['titulo']}}" required><br><br>
+      <label>Descrição: </label>
+      <input type="text" id="descricao" name="descricao" value="{{json['descricao']}}"><br><br>
+      <label>Datas: </label>
+      <input type="date" id="datas" name="datas" value="{{json['datas']}}" required><br><br>
+      <button type="submit">Salvar</button>
       </form>
-      <form>
-        <button type="submit">Excluir</button>
+    {% endif %}
+    {% endif %}
+    {% if tabela == "categorias" %}
+    {% if json == {} %}
+        <form action="criar_categorias" method="post" enctype="multipart/form-data">
+        <label>Nome: </label>
+        <input type="text" id="nome" name="nome" required><br><br>
+        <button type="submit">Salvar</button>
+        </form>
+    {% else %}
+    <form action="editar_categorias" method="post" enctype="multipart/form-data">
+      <label>Nome: </label>
+      <input type="text" id="nome" name="nome" value="{{json['nome']}}" required><br><br>
+      <button type="submit">Salvar</button>
       </form>
+    {% endif %}
+    {% endif %}
+      <form action="/{{tabela}}"><button type="submit">Voltar</button></form>
   </body>
 </html>

@@ -3,27 +3,31 @@
 <header>
   <title>Ingresso.com!</title>
 </header>
-
 <body>
-  <h1>Pagina Inicial: bem-vindo :)</h1>
-
+  <h1>Ingresso.com!</h1>
+  <h3>Eventos disponíveis</h3>
   <table>
     <tr>
       <th>título</th>
       <th>descrição</th>
       <th>datas</th>
+      <th>categorias</th>
+      <th></th>
     </tr>
     {% for valor in valores %}
       <tr>
         <td>{{valor["titulo"]}}</td>
         <td>{{valor["descricao"]}}</td>
         <td>{{valor["datas"]}}</td>
+        <td>{{valor["categorias"]}}</td>
+        <td><form method="get" action="/editar_eventos"><button name="id" value="{{valor['id']}}">Alterar</button></form></td>
+        <td><form method="get" action="/deletar_eventos"><button name="id" value="{{valor['id']}}">Excluir</button></form></td>
       </tr>
     {% endfor %}
   </table>
 
-  <form action="/editar_evento">
-    <button type="submit" value="editar evento">Adicionar evento</button>
+  <form action="/criar_eventos">
+    <button type="submit" value="editar eventos">Adicionar evento</button>
   </form>
 
   <a href="/categorias">Ver categorias</a>

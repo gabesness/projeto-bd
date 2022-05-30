@@ -10,15 +10,18 @@
   <table>
     <tr>
       <th>nome</th>
+      <th></th>
+      <th></th>
     </tr>
     {% for valor in valores %}
       <tr>
-        <td><a href="/editar_categoria">{{valor["nome"]}}</a></td>
+        <td>{{valor["nome"]}}</td>
+        <td><form method="get" action="/deletar_categorias"><button name="id" value="{{valor['id']}}">Excluir</button></form></td>
       </tr>
     {% endfor %}
   </table>
-  <form action="/editar_categoria">
-    <button type="submit" value="editar categoria">Adicionar categoria</button>
+  <form action="/criar_categorias">
+    <button type="submit" value="editar categorias">Adicionar categoria</button>
   </form>
   <a href="/eventos">Voltar para Eventos</a>
 </body>
